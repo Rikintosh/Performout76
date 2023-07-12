@@ -1,0 +1,13 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/packages
+/OctogonCommon/obj
+/Octogon/obj
+/OctagonTesting/obj
+/OctogonCommon/bin
+/Octogon/bin
+/OctagonTesting/bin
+/OctagonTesting/OctagonTesting.csproj.user
