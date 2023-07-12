@@ -7,12 +7,12 @@ using System.Windows;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Octogon")]
+[assembly: AssemblyTitle("Performout")]
 [assembly: AssemblyDescription("Textures and archives batch tools")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Saiska Bugenhagen")]
-[assembly: AssemblyProduct("Octogon")]
-[assembly: AssemblyCopyright("Copyright © 2019")]
+[assembly: AssemblyCompany("Ricardo Ramos & Saiska Bugenhagen")]
+[assembly: AssemblyProduct("Performout")]
+[assembly: AssemblyCopyright("Copyright © 2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

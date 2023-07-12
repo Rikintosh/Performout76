@@ -6,7 +6,7 @@ using System.Linq;
 
 #endregion
 
-namespace OctagonCommon.Informations
+namespace PerformoutCommon.Informations
 {
    public class InformationFile
    {

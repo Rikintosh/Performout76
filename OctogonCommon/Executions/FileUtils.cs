@@ -9,13 +9,13 @@ using System.Linq;
 using System.Security.AccessControl;
 using System.Security.Cryptography;
 using System.Text;
-using OctagonCommon.Configurations;
-using OctagonCommon.Informations;
-using OctagonCommon.Statics;
+using PerformoutCommon.Configurations;
+using PerformoutCommon.Informations;
+using PerformoutCommon.Statics;
 
 #endregion
 
-namespace OctagonCommon.Executions
+namespace PerformoutCommon.Executions
 {
    public static class FileUtils
    {
@@ -185,7 +185,7 @@ namespace OctagonCommon.Executions
             catch (Exception e)
             {
                Logger.Log(e);
-               Logger.Log(string.Format("Octagon continue without deleting {0} because it's used by another process. You can delete it after, it should be empty.", source.FullName), TypeLog.Warning);
+               Logger.Log(string.Format("Performout continue without deleting {0} because it's used by another process. You can delete it after, it should be empty.", source.FullName), TypeLog.Warning);
             }
          }
       }

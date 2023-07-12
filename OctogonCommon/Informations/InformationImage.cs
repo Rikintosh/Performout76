@@ -1,6 +1,6 @@
-﻿using OctagonCommon.Statics;
+﻿using PerformoutCommon.Statics;
 
-namespace OctagonCommon.Informations
+namespace PerformoutCommon.Informations
 {
    public class InformationImage
    {

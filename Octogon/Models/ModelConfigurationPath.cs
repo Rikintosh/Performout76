@@ -1,4 +1,4 @@
-﻿using OctagonCommon.Configurations;
+﻿using PerformoutCommon.Configurations;
 
 namespace Octagon.Models
 {

@@ -11,7 +11,7 @@ namespace Octagon.Tools
    {
       public static void ShowError(string msg)
       {
-         MessageBox.Show(msg, "Octagon Error", MessageBoxButton.OK, MessageBoxImage.Error);
+         MessageBox.Show(msg, "Performout Error", MessageBoxButton.OK, MessageBoxImage.Error);
       }
 
    }

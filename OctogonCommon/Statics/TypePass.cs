@@ -1,4 +1,4 @@
-namespace OctagonCommon.Statics
+namespace PerformoutCommon.Statics
 {
    public enum TypePass
    {
@@ -9,6 +9,7 @@ namespace OctagonCommon.Statics
       Format,
       ApplyGmic,
       ApplyCustom,
+      StripAlpha,
       Force,
       ForceMipmaps,
       CorrectMipmaps,

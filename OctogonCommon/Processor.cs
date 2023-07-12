@@ -7,15 +7,15 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading;
-using OctagonCommon.Args;
-using OctagonCommon.Configurations;
-using OctagonCommon.Executions;
-using OctagonCommon.Informations;
-using OctagonCommon.Statics;
+using PerformoutCommon.Args;
+using PerformoutCommon.Configurations;
+using PerformoutCommon.Executions;
+using PerformoutCommon.Informations;
+using PerformoutCommon.Statics;
 
 #endregion
 
-namespace OctagonCommon
+namespace PerformoutCommon
 {
    public class Processor
    {
@@ -236,7 +236,7 @@ namespace OctagonCommon
                         FileInfo dummy = new FileInfo("dummy.esp");
                         if (!dummy.Exists)
                         {
-                           throw new Exception("No dummy esp to compare from. A dummy.esp file must be present in Octagon directory.");
+                           throw new Exception("No dummy esp to compare from. A dummy.esp file must be present in Performout directory.");
                         }
                         FileInfo esp = new FileInfo(espFile);
                         if (esp.Exists && dummy.Length == esp.Length)
@@ -411,10 +411,10 @@ namespace OctagonCommon
                }
                processorArgs.Folders[infoTextures.Name].NewSize = FileUtils.CalculateDirectorySizeMo(infoTextures, mainCfg.PassBsa.Enabled);
                // Show sizes before/after resizes
-               Logger.Log("Results: (Size before resize in Mo => current size in Mo)");
+               Logger.Log("Results: (Size before resize in Mb => current size in Mb)");
                foreach (var keyValuePair in processorArgs.Folders.OrderBy(e => e.Value.Size))
                {
-                  Logger.Log("{0,15:F2} Mo => {1,15:F2} Mo {2}",
+                  Logger.Log("{0,15:F2} Mb => {1,15:F2} Mb {2}",
                      keyValuePair.Value.Size,
                      keyValuePair.Value.NewSize,
                      keyValuePair.Key);

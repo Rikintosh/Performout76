@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.ComponentModel;
-using OctagonCommon.Statics;
+using PerformoutCommon.Statics;
 
 namespace Octagon.Models
 {
@@ -54,7 +54,7 @@ namespace Octagon.Models
             new ProxyBsaGame( "tes5","Skyrim LE archive format (fo3/fnv/tes5 are technically the same)"),
             new ProxyBsaGame( "sse","Skyrim Special Edition archive format "),
             new ProxyBsaGame( "fo4","Fallout 4 General archive format "),
-            new ProxyBsaGame( "fo4dds","Fallout 4 DDS archive format (streamed DDS textures mipmaps) ") 
+            new ProxyBsaGame( "fo4dds","Fallout 76 DDS archive format (streamed DDS textures mipmaps) ") 
          };
          //
          ProxyDxgiFormat = DxgiFormatList.Formats;

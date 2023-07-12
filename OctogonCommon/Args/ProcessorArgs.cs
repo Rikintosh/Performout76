@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
-using OctagonCommon.Configurations;
-using OctagonCommon.Informations;
+using PerformoutCommon.Configurations;
+using PerformoutCommon.Informations;
 
-namespace OctagonCommon.Args
+namespace PerformoutCommon.Args
 {
    public class ProcessorArgs
    {

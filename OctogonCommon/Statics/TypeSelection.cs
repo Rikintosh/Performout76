@@ -1,4 +1,4 @@
-﻿namespace OctagonCommon.Statics
+﻿namespace PerformoutCommon.Statics
 {
    public enum TypeSelection
    {

@@ -6,13 +6,13 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
-using OctagonCommon.Configurations;
-using OctagonCommon.Informations;
-using OctagonCommon.Statics;
+using PerformoutCommon.Configurations;
+using PerformoutCommon.Informations;
+using PerformoutCommon.Statics;
 
 #endregion
 
-namespace OctagonCommon.Executions
+namespace PerformoutCommon.Executions
 {
    public class ExternalTools
    {
@@ -157,7 +157,7 @@ namespace OctagonCommon.Executions
          return CallBsarch(string.Format("{0}: {1}", ProgressUnpack, fileName), call, verbose);
       }
 
-      public InformationProcess CallDxDiag(string filePath, bool isGetOutput, bool isVerbose)
+      public InformationProcess CallDxDiag(string command, string filePath, bool isGetOutput, bool isVerbose)
       {
          var startInfo = new ProcessStartInfo
          {
@@ -167,7 +167,7 @@ namespace OctagonCommon.Executions
             RedirectStandardError = true,
             CreateNoWindow = true,
             FileName = ConfigurationPath.PathTexdiag,
-            Arguments = string.Format("info \"{0}\" ", filePath)
+            Arguments = string.Format("{0} \"{1}\" ", command, filePath)
          };
          //
          var process = new Process { StartInfo = startInfo };
@@ -180,16 +180,16 @@ namespace OctagonCommon.Executions
          switch (typeTexCompression)
          {
             case TypeTexCompression.BC7Max:
-               compressionParam = " -bcmax";
+               compressionParam = " -bc x";
                break;
             case TypeTexCompression.BC7Min:
-               compressionParam = " -bcquick";
+               compressionParam = " -bc q";
                break;
             case TypeTexCompression.BC13Dith:
-               compressionParam = " -bcdither";
+               compressionParam = " -bc d";
                break;
             case TypeTexCompression.BC13Uni:
-               compressionParam = " -bcuniform";
+               compressionParam = " -bc u";
                break;
          }
          var startInfo = new ProcessStartInfo
@@ -200,7 +200,7 @@ namespace OctagonCommon.Executions
             RedirectStandardError = true,
             CreateNoWindow = true,
             FileName = ConfigurationPath.PathTexconv,
-            Arguments = string.Format("-nologo -y -sepalpha -f {0}{1} -w {2} -h {3} -m {4} -o \"{5}\" \"{6}\"", format, compressionParam, newW, newH, mips, ouputDir, filePath)
+            Arguments = string.Format("-nologo -y -f {0}{1} -w {2} -h {3} -m {4} -o \"{5}\" \"{6}\"", format, compressionParam, newW, newH, mips, ouputDir, filePath)
          };
          //
          var process = new Process { StartInfo = startInfo };

@@ -8,8 +8,8 @@ using System.Windows.Navigation;
 using Octagon.Models;
 using Octagon.Tools;
 using Octagon.Windows;
-using OctagonCommon;
-using OctagonCommon.Args;
+using PerformoutCommon;
+using PerformoutCommon.Args;
 using Application = System.Windows.Forms.Application;
 using Button = System.Windows.Controls.Button;
 using MessageBox = System.Windows.MessageBox;
@@ -112,6 +112,11 @@ namespace Octagon
       private void ButtonAddForce(object sender, RoutedEventArgs e)
       {
          ModelConfiguration.Main.AddForce();
+      }
+
+      private void ButtonAddStripAlpha(object sender, RoutedEventArgs e)
+      {
+         ModelConfiguration.Main.AddStripAlpha();
       }
 
       private void ButtonAddCustom(object sender, RoutedEventArgs e)
@@ -253,5 +258,15 @@ namespace Octagon
          w.DataContext = w.ModelProcessor;
          w.ShowDialog();
       }
-   }
+
+        private void ComboBox_SelectionChanged(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void ComboBox_SelectionChanged_1(object sender, System.Windows.Controls.SelectionChangedEventArgs e)
+        {
+
+        }
+    }
 }

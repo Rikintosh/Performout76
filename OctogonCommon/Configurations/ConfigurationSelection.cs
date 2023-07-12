@@ -5,11 +5,11 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using Newtonsoft.Json;
-using OctagonCommon.Statics;
+using PerformoutCommon.Statics;
 
 #endregion
 
-namespace OctagonCommon.Configurations
+namespace PerformoutCommon.Configurations
 {
    public class ConfigurationSelection
    {

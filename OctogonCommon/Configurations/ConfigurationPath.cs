@@ -1,4 +1,4 @@
-﻿namespace OctagonCommon.Configurations
+﻿namespace PerformoutCommon.Configurations
 {
    public class ConfigurationPath
    {

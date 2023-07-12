@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows;
-using OctagonCommon.Configurations;
-using OctagonCommon.Statics;
+using PerformoutCommon.Configurations;
+using PerformoutCommon.Statics;
 
 namespace Octagon.Models
 {
@@ -31,6 +31,9 @@ namespace Octagon.Models
                break;
             case TypePass.Force:
                Title = "Force recompression";
+               break;
+            case TypePass.StripAlpha:
+               Title = "Strip unused alphas";
                break;
             case TypePass.ApplyGmic:
                Title = "Apply GMIC filter";

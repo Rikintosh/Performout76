@@ -2,9 +2,10 @@
 
 #endregion
 
-using OctagonCommon.Statics;
+using PerformoutCommon.Statics;
+using System;
 
-namespace OctagonCommon.Configurations
+namespace PerformoutCommon.Configurations
 {
    public class ConfigurationPass : IConfigurationSelection
    {
@@ -52,6 +53,11 @@ namespace OctagonCommon.Configurations
          return new ConfigurationPass { TypePass = TypePass.Force };
       }
 
+      public static ConfigurationPass GetStripAlpha()
+      {
+         return new ConfigurationPass { TypePass = TypePass.StripAlpha };
+      }
+
       public static ConfigurationPass GetCustom()
       {
          return new ConfigurationPass { IsApplyOnPng = true, TypePass = TypePass.ApplyCustom };
@@ -61,7 +67,7 @@ namespace OctagonCommon.Configurations
       {
          return new ConfigurationPass { WantedFactor = mult, TypePass = TypePass.UpscaleFactor };
       }
-
+     
       public static ConfigurationPass GetUpscaleFixed(int maxSize)
       {
          return new ConfigurationPass { WantedSize = maxSize, TypePass = TypePass.UpscaleFixed };
@@ -86,5 +92,6 @@ namespace OctagonCommon.Configurations
       {
          return new ConfigurationPass { TypePass = TypePass.CorrectMipmaps };
       }
-   }
+
+    }
 }

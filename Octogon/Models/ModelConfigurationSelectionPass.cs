@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
 using System.Windows;
-using OctagonCommon.Configurations;
-using OctagonCommon.Statics;
+using PerformoutCommon.Configurations;
+using PerformoutCommon.Statics;
 
 namespace Octagon.Models
 {

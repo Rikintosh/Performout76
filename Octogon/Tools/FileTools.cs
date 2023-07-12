@@ -12,12 +12,12 @@ namespace Octagon.Tools
    {
       public static string GetFileFilters(string title, bool save, string defaultPath)
       {
-         return GetFile(title, save, @".ofilters", @"Octagon filters files (*.ofilters)|*.ofilters|json files (*.json)|*.json", defaultPath);
+         return GetFile(title, save, @".ofilters", @"Performout filters files (*.ofilters)|*.ofilters|json files (*.json)|*.json", defaultPath);
       }
 
       public static string GetFileConfiguration(string title, bool save, string defaultPath)
       {
-         return GetFile(title, save, @".oconfig", @"Octagon configuration files (*.oconfig)|*.oconfig|json files (*.json)|*.json", defaultPath);
+         return GetFile(title, save, @".oconfig", @"Performout configuration files (*.oconfig)|*.oconfig|json files (*.json)|*.json", defaultPath);
       }
 
       public static string GetFileAny(string title, bool save, string defaultPath)

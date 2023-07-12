@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace OctagonCommon.Args
+namespace PerformoutCommon.Args
 {
    public class ProgresserEventArgs : EventArgs
    {

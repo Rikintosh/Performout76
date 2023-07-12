@@ -6,7 +6,7 @@ using System.Linq;
 
 #endregion
 
-namespace OctagonCommon.Configurations
+namespace PerformoutCommon.Configurations
 {
    public class ConfigurationMain : IConfigurationSelection
    {

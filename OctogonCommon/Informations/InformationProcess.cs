@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.IO;
 
-namespace OctagonCommon.Informations
+namespace PerformoutCommon.Informations
 {
    public class InformationProcess
    {

@@ -1,5 +1,5 @@
 ﻿using System.Windows;
-using OctagonCommon.Configurations;
+using PerformoutCommon.Configurations;
 
 namespace Octagon.Models
 {

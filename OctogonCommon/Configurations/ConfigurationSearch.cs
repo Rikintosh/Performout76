@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
-using OctagonCommon.Statics;
+using PerformoutCommon.Statics;
 
-namespace OctagonCommon.Configurations
+namespace PerformoutCommon.Configurations
 {
    public class ConfigurationSearch
    {

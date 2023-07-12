@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace OctagonCommon.Statics
+namespace PerformoutCommon.Statics
 {
    public static class GameParameterExtensionList
    {

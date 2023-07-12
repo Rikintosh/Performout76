@@ -4,13 +4,13 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using OctagonCommon.Configurations;
-using OctagonCommon.Informations;
-using OctagonCommon.Statics;
+using PerformoutCommon.Configurations;
+using PerformoutCommon.Informations;
+using PerformoutCommon.Statics;
 
 #endregion
 
-namespace OctagonCommon.Executions
+namespace PerformoutCommon.Executions
 {
    public class FileInformation
    {
@@ -56,7 +56,8 @@ namespace OctagonCommon.Executions
          // Get  each file into the new directory.
          foreach (FileInfo fileSource in source.GetFiles())
          {                  
-            // Patch for non existing ba2 but existing ba2 unarchived directory
+            /*
+             * // Patch for non existing ba2 but existing ba2 unarchived directory
             if (isBsa && EspExtensionList.List.Any(e => string.Equals(e, fileSource.Extension, StringComparison.InvariantCultureIgnoreCase)))
             {
                //var custom = FileUtils.GetBsaTempDirectory(fileSource);   
@@ -83,6 +84,7 @@ namespace OctagonCommon.Executions
 
 
             }
+            */
             //ignore no dds file                                                                               
             if (!extension.Any(e => string.Equals(e, fileSource.Extension, StringComparison.InvariantCultureIgnoreCase)))
             {

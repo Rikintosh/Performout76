@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
-using OctagonCommon.Args;
-using OctagonCommon.Statics;
+using PerformoutCommon.Args;
+using PerformoutCommon.Statics;
 
-namespace OctagonCommon
+namespace PerformoutCommon
 {
    public class Logger
    {

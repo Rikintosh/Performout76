@@ -5,7 +5,7 @@ using System.IO;
 
 #endregion
 
-namespace OctagonCommon.Informations
+namespace PerformoutCommon.Informations
 {
    public class InformationOrder
    {

@@ -1,7 +1,7 @@
 ﻿using System;
-using OctagonCommon.Statics;
+using PerformoutCommon.Statics;
 
-namespace OctagonCommon.Args
+namespace PerformoutCommon.Args
 {
    public class LoggerArgs : EventArgs
    {

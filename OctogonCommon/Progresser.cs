@@ -1,7 +1,7 @@
 ﻿using System;
-using OctagonCommon.Args;
+using PerformoutCommon.Args;
 
-namespace OctagonCommon
+namespace PerformoutCommon
 {
    public class Progresser
    {

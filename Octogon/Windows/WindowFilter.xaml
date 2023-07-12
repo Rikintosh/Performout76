@@ -5,11 +5,11 @@
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:models="clr-namespace:Octagon.Models"
         xmlns:converter="clr-namespace:Octagon.Converter"
-        Title="Octagon Edit filters" mc:Ignorable="d"
+        Title="Edit filters" mc:Ignorable="d"
         Style="{StaticResource {x:Type Window}}" Icon="../icon.ico"
         WindowStyle="SingleBorderWindow" WindowStartupLocation="CenterScreen"
         d:DataContext="{d:DesignInstance models:ModelConfigurationSelection}"
-        Height="960" Width="1280">
+        Height="700" Width="960">
 
 	<Grid Margin="10">
 		<Grid.Resources>
@@ -28,7 +28,7 @@
 				<ColumnDefinition Width="*" />
 				<ColumnDefinition Width="Auto" />
 			</Grid.ColumnDefinitions>
-			<TextBlock Grid.Row="0" Foreground="DodgerBlue" TextWrapping="Wrap"
+			<TextBlock Grid.Row="0" Foreground="#FF292825" TextWrapping="Wrap"
 			           Text="Filters allow to include or exclude file/directory depending of their name. It don't take file extension in consideration. Also, it works as a OR between them." />
 
 			<Button Grid.Column="1" Content="Show more infos" Height="20"
@@ -36,26 +36,14 @@
 		</Grid>
 
 
-		<StackPanel Grid.Row="1" Margin="5" Orientation="Vertical" Visibility="{Binding VisibilityShowInfo}">
-			<TextBlock Margin="5" Foreground="DodgerBlue" TextWrapping="Wrap" Text="Known SSE file name ending:" />
-			<TextBlock Margin="5" Foreground="DodgerBlue" TextWrapping="Wrap" Text="_n - normal map" />
-			<TextBlock Margin="5" Foreground="DodgerBlue" TextWrapping="Wrap"
-			           Text="_msn - Model Space Normal map/Object Space Normal map" />
-			<TextBlock Margin="5" Foreground="DodgerBlue" TextWrapping="Wrap" Text="_g - glow map" />
-			<TextBlock Margin="5" Foreground="DodgerBlue" TextWrapping="Wrap" Text="_p - parallax map" />
-			<TextBlock Margin="5" Foreground="DodgerBlue" TextWrapping="Wrap" Text="_e - environment cube map" />
-			<TextBlock Margin="5" Foreground="DodgerBlue" TextWrapping="Wrap"
-			           Text="_em/_m/_envmask/_envmapmask - environment mask map" />
-			<TextBlock Margin="5" Foreground="DodgerBlue" TextWrapping="Wrap" Text="_s - specular map" />
-			<TextBlock Margin="5" Foreground="DodgerBlue" TextWrapping="Wrap" Text="_sk - A skin texture" />
-		</StackPanel>
+        <StackPanel Grid.Row="1" Margin="5" Orientation="Vertical" Visibility="{Binding VisibilityShowInfo}"/>
 
-		<ListView Grid.Row="2" Margin="5" x:Name="ListViewSourceFilter"
-		          ItemsSource="{Binding Filters, Mode=OneWay}" Background="{StaticResource ScrollViewerBackgroundSpecial}">
+        <ListView Grid.Row="2" Margin="5" x:Name="ListViewSourceFilter"
+		          ItemsSource="{Binding Filters}" Background="{DynamicResource CheckBoxDisabledStroke}" BorderBrush="#FF2F2D26">
 			<ListView.ItemContainerStyle>
 				<Style TargetType="ListViewItem">
 					<Setter Property="HorizontalContentAlignment" Value="Stretch" />
-					<Setter Property="Background" Value="{StaticResource ScrollViewerBackgroundSpecial}" />
+					<Setter Property="Background" Value="#FF3E3B33" />
 				</Style>
 			</ListView.ItemContainerStyle>
 			<ListView.ItemTemplate>

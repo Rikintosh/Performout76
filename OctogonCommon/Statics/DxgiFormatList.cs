@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 #endregion
 
-namespace OctagonCommon.Statics
+namespace PerformoutCommon.Statics
 {
    public static class DxgiFormatList
    {

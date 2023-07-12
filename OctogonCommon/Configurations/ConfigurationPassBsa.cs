@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace OctagonCommon.Configurations
+namespace PerformoutCommon.Configurations
 {
    public class ConfigurationPassBsa : IConfigurationSelection
    {
@@ -70,13 +70,13 @@ namespace OctagonCommon.Configurations
       {
          const long maxSize = 2400000000;
          Repacks.Clear();
-         Repacks.Add(new ConfigurationRepack("OctagonMeshes$.bsa", GameParameter, true, maxSize, "Meshes"));
-         Repacks.Add(new ConfigurationRepack("OctagonTextures$.bsa", GameParameter, true, maxSize, "Textures"));
-         Repacks.Add(new ConfigurationRepack("OctagonInterface$.bsa", GameParameter, true, maxSize, "Interface"));
-         Repacks.Add(new ConfigurationRepack("OctagonShaders$.bsa", GameParameter, true, maxSize, "Shadersfx"));
-         Repacks.Add(new ConfigurationRepack("OctagonSounds$.bsa", GameParameter, false, maxSize, "Sound"));
-         Repacks.Add(new ConfigurationRepack("OctagonMusic$.bsa", GameParameter, false, maxSize, "Music"));
-         Repacks.Add(new ConfigurationRepack("OctagonMisc$.bsa", GameParameter, true, maxSize, "scripts", "grass"));
+         Repacks.Add(new ConfigurationRepack("PerformoutMeshes$.bsa", GameParameter, true, maxSize, "Meshes"));
+         Repacks.Add(new ConfigurationRepack("PerformoutTextures$.bsa", GameParameter, true, maxSize, "Textures"));
+         Repacks.Add(new ConfigurationRepack("PerformoutInterface$.bsa", GameParameter, true, maxSize, "Interface"));
+         Repacks.Add(new ConfigurationRepack("PerformoutShaders$.bsa", GameParameter, true, maxSize, "Shadersfx"));
+         Repacks.Add(new ConfigurationRepack("PerformoutSounds$.bsa", GameParameter, false, maxSize, "Sound"));
+         Repacks.Add(new ConfigurationRepack("PerformoutMusic$.bsa", GameParameter, false, maxSize, "Music"));
+         Repacks.Add(new ConfigurationRepack("PerformoutMisc$.bsa", GameParameter, true, maxSize, "scripts", "grass"));
       }
    }
 }

@@ -2,7 +2,7 @@
 using System.Linq;
 using System.Windows;
 using System.Windows.Input;
-using OctagonCommon.Configurations;
+using PerformoutCommon.Configurations;
 using Octagon.Tools;
 
 namespace Octagon.Models

@@ -6,382 +6,389 @@
         xmlns:userControls="clr-namespace:Octagon.UserControls"
         xmlns:models="clr-namespace:Octagon.Models"
         Style="{StaticResource {x:Type Window}}"
-        Height="960" Width="1280" WindowStyle="SingleBorderWindow" mc:Ignorable="d"
-        Title="Octagon" WindowStartupLocation="CenterScreen"
+        Height="700" Width="960" WindowStyle="SingleBorderWindow" mc:Ignorable="d"
+        Title="Performout" WindowStartupLocation="CenterScreen"
         d:DataContext="{d:DesignInstance models:ModelConfiguration}" Icon="Icon.ico">
 
 
-	<DockPanel>
-		<Menu Margin="2" DockPanel.Dock="Top">
-			<MenuItem Margin="2" Header="_File">
-				<MenuItem Margin="2" Header="_Open configuration..." Click="ButtonOpen" />
-				<MenuItem Margin="2" Header="_Save configuration..." Click="ButtonSave" />
-				<Separator Margin="2" />
-				<MenuItem Margin="2" Header="_Exit" Click="ButtonExit" />
-			</MenuItem>
-			<MenuItem Margin="2" Header="_?">
-				<MenuItem Margin="2" Header="_Credits" Click="ButtonCredits" />
-			</MenuItem>
-		</Menu>
+    <DockPanel>
+        <Menu Margin="2" DockPanel.Dock="Top">
+            <Menu.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF1F1E1B" Offset="1"/>
+                    <GradientStop Color="#FF292825" Offset="0"/>
+                </LinearGradientBrush>
+            </Menu.Background>
+            <MenuItem Margin="2" Header="_File">
+                <MenuItem Margin="2" Header="_Open configuration..." Click="ButtonOpen" />
+                <MenuItem Margin="2" Header="_Save configuration..." Click="ButtonSave" />
+                <Separator Margin="2" />
+                <MenuItem Margin="2" Header="_Exit" Click="ButtonExit" />
+            </MenuItem>
+            <MenuItem Margin="2" Header="_?">
+                <MenuItem Margin="2" Header="_Credits" Click="ButtonCredits" />
+            </MenuItem>
+        </Menu>
 
 
-		<Grid>
-			<Image Source="icon.png" Width="32" Height="32" Margin="10,10,0,0" HorizontalAlignment="Left"
+        <Grid>
+            <Grid.Background>
+                <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                    <GradientStop Color="#FF1D1D1B" Offset="1"/>
+                    <GradientStop Color="#FF2F2E2A" Offset="0"/>
+                </LinearGradientBrush>
+            </Grid.Background>
+            <Image Source="icon.png" Width="32" Height="32" Margin="10,10,0,0" HorizontalAlignment="Left"
 			       VerticalAlignment="Top" />
-			<Label Content="Octagon" HorizontalAlignment="Left" Margin="10,47,0,47" RenderTransformOrigin="0.5,0.5"
-			       FontFamily="Segoe UI Black" FontSize="20" FontWeight="Bold">
-				<Label.LayoutTransform>
-					<TransformGroup>
-						<ScaleTransform />
-						<SkewTransform />
-						<RotateTransform Angle="90" />
-						<TranslateTransform />
-					</TransformGroup>
-				</Label.LayoutTransform>
-			</Label>
-			<TabControl Margin="47,10,10,47">
-				<TabItem Header="General">
-					<ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled"
-					              Background="{StaticResource ScrollViewerBackgroundSpecial}">
-						<StackPanel Orientation="Vertical" Margin="10">
-							<TextBlock Margin="5" Text="Textures/archives source path:" FontWeight="Black" FontSize="16" />
-							<Grid>
-								<Grid.ColumnDefinitions>
-									<ColumnDefinition Width="*" />
-									<ColumnDefinition Width="Auto" />
-								</Grid.ColumnDefinitions>
-								<TextBox Grid.Column="0" Margin="5"
-								         Text="{Binding Main.PathSource, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
-								<Button Grid.Column="1" Margin="5" Content=". . ." Click="SetSourceDir" />
-							</Grid>
-							<TextBlock Margin="5" Foreground="DodgerBlue" TextWrapping="Wrap"
-							           Text="Set the directory where the textures (.dds files) or archives (.bsa files) are. It can be skyrim data dir, or if you are a MO2 users, you can select your MO2's mods directory." />
+            <TabControl Margin="10,10,10,47">
+                <TabItem Header="General" Background="#FF3E3D38">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                        <ScrollViewer.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF292825"/>
+                                <GradientStop Color="#FF3E3D38" Offset="1"/>
+                            </LinearGradientBrush>
+                        </ScrollViewer.Background>
+                        <StackPanel Orientation="Vertical" Margin="10">
+                            <TextBlock Margin="5" Text="Textures/archives source path:" FontWeight="Black" FontSize="16" />
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <TextBox Grid.Column="0" Margin="5"
+								         Text="{Binding Main.PathSource, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Background="#FF3E3D33" BorderBrush="#FF2B2A23" SelectionBrush="#FFA7813E" />
+                                <Button Grid.Column="1" Margin="5" Content="  ...  " Click="SetSourceDir" />
+                            </Grid>
 
-							<Button Margin="5" Content="Edit source path filters" Click="ShowSourcePathFilter" />
-							<userControls:FilterShow ModelConfigurationSelection="{Binding Main.ModelSelection,Mode=OneWay}" />
+                            <Button Margin="5" Content="Edit source path filters" Click="ShowSourcePathFilter" />
+                            <userControls:FilterShow ModelConfigurationSelection="{Binding Main.ModelSelection,Mode=OneWay}" />
 
-							<TextBlock Margin="5" Foreground="DodgerBlue" TextWrapping="Wrap"
-							           Text="Filters allow you to decide which directory inside your source directory will be processed." />
-
-							<Separator Margin="5" />
-							<CheckBox Margin="5"
-							          IsChecked="{Binding Main.IsUseMultithreading, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged }">
-								<TextBlock Text="Use multithreading (faster processing but will eat your CPU/GPU alive)" TextWrapping="Wrap" />
-							</CheckBox>
-							<CheckBox Margin="5"
+                            <Separator Margin="5" />
+                            <CheckBox Margin="5"
 							          IsChecked="{Binding Main.IsVerbose, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged }">
-								<TextBlock Text="Verbose mode: output will show more details during process" TextWrapping="Wrap" />
-							</CheckBox>
-							<CheckBox Margin="5"
+                                <TextBlock Text="Verbose mode: output will show more details during process" TextWrapping="Wrap" />
+                            </CheckBox>
+                            <CheckBox Margin="5"
 							          IsChecked="{Binding Main.IsNoConfirmationMessage, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged }">
-								<TextBlock Text="Don't ask for any confirmation during the process, unless there is a critical error"
+                                <TextBlock Text="Don't ask for any confirmation during the process, unless there is a critical error"
 								           TextWrapping="Wrap" />
-							</CheckBox>
-							<CheckBox Margin="5"
+                            </CheckBox>
+                            <CheckBox Margin="5"
 							          IsChecked="{Binding Main.IsShowResults, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged }">
-								<TextBlock Text="Show results at the end, ie. directory size before and after the process" TextWrapping="Wrap" />
-							</CheckBox>
-							<CheckBox Margin="5"
+                                <TextBlock Text="Show results at the end, ie. directory size before and after the process" TextWrapping="Wrap" />
+                            </CheckBox>
+                            <CheckBox Margin="5"
 							          IsChecked="{Binding IsLogInFile, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged }">
-								<TextBlock Text="Write logs in logs.txt in the exe directory" TextWrapping="Wrap" />
-							</CheckBox>
-							<Separator/>
+                                <TextBlock Text="Write logs in logs.txt in the exe directory" TextWrapping="Wrap" />
+                            </CheckBox>
+                            <Separator/>
 
-							<CheckBox Margin="5"
+                            <CheckBox Margin="5"
 								          IsChecked="{Binding Main.ModelSearch.IsSearchEnabled, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged }">
-								<TextBlock Text="Search for textures"
+                                <TextBlock Text="Search for textures"
 									           TextWrapping="Wrap" />
-							</CheckBox>
+                            </CheckBox>
 
-							<StackPanel Orientation="Vertical" Visibility="{Binding Main.ModelSearch.VisibilitySearch, Mode=OneWay}">
+                            <StackPanel Orientation="Vertical" Visibility="{Binding Main.ModelSearch.VisibilitySearch, Mode=OneWay}">
 
-								<CheckBox Margin="5"
+                                <CheckBox Margin="5"
 								          IsChecked="{Binding Main.ModelSearch.IsApplySearchToProcess, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged }">
-									<TextBlock Text="Process only textures found in search results"
+                                    <TextBlock Text="Process only textures found in search results"
 									           TextWrapping="Wrap" />
-								</CheckBox>
+                                </CheckBox>
 
-								<Grid>
-									<Grid.RowDefinitions>
-										<RowDefinition/>
-										<RowDefinition/>
-										<RowDefinition/>
-										<RowDefinition/>
-										<RowDefinition/>
-										<RowDefinition/>
-									</Grid.RowDefinitions>
-									<Grid.ColumnDefinitions>
-										<ColumnDefinition Width="*"/>
-										<ColumnDefinition Width="2*"/>
-									</Grid.ColumnDefinitions>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="2*"/>
+                                    </Grid.ColumnDefinitions>
 
-									<CheckBox  Grid.Column="0" Grid.Row="0"
+                                    <CheckBox  Grid.Column="0" Grid.Row="0"
 										           Margin="5" Content="Check name contains"  IsChecked="{Binding Main.ModelSearch.IsSearchNameEnabled, Mode=TwoWay}" />
-									<CheckBox  Grid.Column="0" Grid.Row="1"
+                                    <CheckBox  Grid.Column="0" Grid.Row="1"
 										           Margin="5" Content="Check format"  IsChecked="{Binding Main.ModelSearch.IsSearchFormatEnabled, Mode=TwoWay}" />
-									<CheckBox  Grid.Column="0" Grid.Row="2"
+                                    <CheckBox  Grid.Column="0" Grid.Row="2"
 										           Margin="5" Content="Check minimum size"  IsChecked="{Binding Main.ModelSearch.IsSearchMinSizeEnabled, Mode=TwoWay}" />
-									<CheckBox  Grid.Column="0" Grid.Row="3"
+                                    <CheckBox  Grid.Column="0" Grid.Row="3"
 										           Margin="5" Content="Check maximum size"  IsChecked="{Binding Main.ModelSearch.IsSearchMaxSizeEnabled, Mode=TwoWay}" />
-									<CheckBox  Grid.Column="0" Grid.Row="4"
+                                    <CheckBox  Grid.Column="0" Grid.Row="4"
 										           Margin="5" Content="Check mipmaps"  IsChecked="{Binding Main.ModelSearch.IsSearchMipmapsEnabled, Mode=TwoWay}" />
-									<CheckBox  Grid.Column="0" Grid.Row="5"
+                                    <CheckBox  Grid.Column="0" Grid.Row="5"
 										           Margin="5" Content="Check size power of 2"  IsChecked="{Binding Main.ModelSearch.IsSearchPowerOf2, Mode=TwoWay}" />
 
-									<TextBox  Grid.Column="1" Grid.Row="0"
-										          Margin="5"  Text="{Binding Main.ModelSearch.Name, Mode=TwoWay}"/>
-									<ComboBox  Grid.Column="1" Grid.Row="1"
+                                    <TextBox  Grid.Column="1" Grid.Row="0"
+										          Margin="5"  Text="{Binding Main.ModelSearch.Name, Mode=TwoWay}" Background="#FF3E3D33" SelectionBrush="#FFA7813E"/>
+                                    <ComboBox  Grid.Column="1" Grid.Row="1"
 										           Margin="5"  
 										           ItemsSource="{Binding ProxyDxgiFormat, Mode=OneWay}"
-										           SelectedValue="{Binding Main.ModelSearch.Format, Mode=TwoWay}" />
-									<ComboBox  Grid.Column="1" Grid.Row="2"
+										           SelectedValue="{Binding Main.ModelSearch.Format, Mode=TwoWay}" SelectionChanged="ComboBox_SelectionChanged" Background="#FF3E3D38" BorderBrush="#FF272623" />
+                                    <ComboBox  Grid.Column="1" Grid.Row="2"
 										           Margin="5"  
 										           ItemsSource="{Binding ProxySize, Mode=OneWay}"
 										           SelectedValue="{Binding Main.ModelSearch.MinSize, Mode=TwoWay}"
-										           SelectedValuePath="Integer" DisplayMemberPath="Text" />
-									<ComboBox  Grid.Column="1" Grid.Row="3"
+										           SelectedValuePath="Integer" DisplayMemberPath="Text" Background="#FF3E3D38" BorderBrush="#FF272623" />
+                                    <ComboBox  Grid.Column="1" Grid.Row="3"
 										           Margin="5"  
 										           ItemsSource="{Binding ProxySize, Mode=OneWay}"
 										           SelectedValue="{Binding Main.ModelSearch.MaxSize, Mode=TwoWay}"
-										           SelectedValuePath="Integer" DisplayMemberPath="Text" />
-									<CheckBox  Grid.Column="1" Grid.Row="4"
+										           SelectedValuePath="Integer" DisplayMemberPath="Text" Background="#FF3E3D38" BorderBrush="#FF272623" />
+                                    <CheckBox  Grid.Column="1" Grid.Row="4"
 										           Margin="5" Content="With mipmaps"  IsChecked="{Binding Main.ModelSearch.IsMipmaps, Mode=TwoWay}" />
-									<CheckBox  Grid.Column="1" Grid.Row="5"
+                                    <CheckBox  Grid.Column="1" Grid.Row="5"
 										           Margin="5" Content="Width and height are a power of 2"  IsChecked="{Binding Main.ModelSearch.IsPowerOf2, Mode=TwoWay}" />
-								</Grid>
-							</StackPanel>
-						</StackPanel>
-					</ScrollViewer>
-				</TabItem>
+                                </Grid>
+                            </StackPanel>
+                        </StackPanel>
+                    </ScrollViewer>
+                </TabItem>
 
-				<TabItem Header="Backup">
-					<ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled"
-					              Background="{StaticResource ScrollViewerBackgroundSpecial}">
-						<StackPanel Orientation="Vertical" Margin="10">
-							<CheckBox Margin="5"
+                <TabItem Header="Backup" Background="#FF3E3D38">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                        <ScrollViewer.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF292825"/>
+                                <GradientStop Color="#FF3E3D38" Offset="1"/>
+                            </LinearGradientBrush>
+                        </ScrollViewer.Background>
+                        <StackPanel Orientation="Vertical" Margin="10">
+                            <CheckBox Margin="5"
 							          IsChecked="{Binding Main.IsBackupActivated, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged }">
-								<TextBlock Text="Use a backup directory to store originals textures/archives" TextWrapping="Wrap" />
-							</CheckBox>
+                                <TextBlock Text="Use a backup directory to store originals textures/archives" TextWrapping="Wrap" />
+                            </CheckBox>
 
-							<StackPanel Orientation="Vertical" Visibility="{Binding Main.VisibilityBackup, Mode=OneWay}">
-								<Separator Margin="5" />
-								<TextBlock Margin="5" Text="Backup path:" FontWeight="Black" FontSize="16" />
-								<Grid>
-									<Grid.ColumnDefinitions>
-										<ColumnDefinition Width="*" />
-										<ColumnDefinition Width="Auto" />
-									</Grid.ColumnDefinitions>
-									<TextBox Grid.Column="0" Margin="5"
-									         Text="{Binding Main.PathBackup, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged }" />
-									<Button Grid.Column="1" Margin="5" Content=". . ." Click="SetBackupDir" />
-								</Grid>
-								<TextBlock Margin="5" Foreground="DodgerBlue" TextWrapping="Wrap"
-								           Text="Avoid any folder in your skyrim directory. For better performances, choose your backup directory on another physical disk. Remember to check if you have enough space. If you enable BSA archives changes, the backup will apply to bsa files, but only bsa files with dds textures insides." />
+                            <StackPanel Orientation="Vertical" Visibility="{Binding Main.VisibilityBackup, Mode=OneWay}">
+                                <Separator Margin="5" />
+                                <TextBlock Margin="5" Text="Backup path:" FontWeight="Black" FontSize="16" />
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBox Grid.Column="0" Margin="5"
+									         Text="{Binding Main.PathBackup, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged }" Background="#FF3E3D33" SelectionBrush="#FFA7813E" />
+                                    <Button Grid.Column="1" Margin="5" Content="  ...  " Click="SetBackupDir" />
+                                </Grid>
 
-								<Separator Margin="5" />
-								<CheckBox Margin="5"
+                                <Separator Margin="5" />
+                                <CheckBox Margin="5"
 								          IsChecked="{Binding Main.IsRefreshBackup, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged }">
-									<TextBlock Text="Copy new files into the backup before processing it" TextWrapping="Wrap" />
-								</CheckBox>
-								<CheckBox Margin="5"
+                                    <TextBlock Text="Copy new files into the backup before processing it" TextWrapping="Wrap" />
+                                </CheckBox>
+                                <CheckBox Margin="5"
 								          IsChecked="{Binding Main.IsOnlyNewFromArchive, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged }">
-									<TextBlock Text="Process only new files (currently absent from the backup)" TextWrapping="Wrap" />
-								</CheckBox>
-								<CheckBox Margin="5"
+                                    <TextBlock Text="Process only new files (currently absent from the backup)" TextWrapping="Wrap" />
+                                </CheckBox>
+                                <CheckBox Margin="5"
 								          IsChecked="{Binding Main.IsRecopyOriginal, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged }">
-									<TextBlock Text="Recopy backup files into the source before processing it" TextWrapping="Wrap" />
-								</CheckBox>
-								<CheckBox Margin="5"
+                                    <TextBlock Text="Recopy backup files into the source before processing it" TextWrapping="Wrap" />
+                                </CheckBox>
+                                <CheckBox Margin="5"
 								          IsChecked="{Binding Main.IsUseBackup, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged }">
-									<TextBlock Text="Use files from the backup if possible during the process" TextWrapping="Wrap" />
-								</CheckBox>
-								<CheckBox Margin="5"
+                                    <TextBlock Text="Use files from the backup if possible during the process" TextWrapping="Wrap" />
+                                </CheckBox>
+                                <CheckBox Margin="5"
 								          IsChecked="{Binding Main.IsCleanBackup, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged }">
-									<TextBlock Text="Clean empty and deleted mods from the backup directory at the end of the process"
+                                    <TextBlock Text="Clean empty and deleted mods from the backup directory at the end of the process"
 									           TextWrapping="Wrap" />
-								</CheckBox>
+                                </CheckBox>
 
 
-							</StackPanel>
-						</StackPanel>
-					</ScrollViewer>
-				</TabItem>
-				<TabItem Header="Textures">
-					<ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled"
-					              Background="{StaticResource ScrollViewerBackgroundSpecial}">
-						<Grid Margin="10">
-							<Grid.RowDefinitions>
-								<RowDefinition Height="Auto" />
-								<RowDefinition Height="*" />
-								<RowDefinition Height="Auto" />
-							</Grid.RowDefinitions>
-							<TextBlock Grid.Row="0" Margin="5" Foreground="DodgerBlue" TextWrapping="Wrap"
-							           Text="Allow custom downscaling and texture format changes. If you're experiencing VRAM shortage, you can gain many fps by downscaling larger textures. I advise you to not downscale mountains texture, water textures or lods ressources. For SSE, DC7_UNORM is the best supported format compression/loss ratio." />
+                            </StackPanel>
+                        </StackPanel>
+                    </ScrollViewer>
+                </TabItem>
+                <TabItem Header="Textures" Background="#FF3E3D38">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                        <ScrollViewer.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF292825"/>
+                                <GradientStop Color="#FF3E3D38" Offset="1"/>
+                            </LinearGradientBrush>
+                        </ScrollViewer.Background>
+                        <Grid Margin="10">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto" />
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
 
-							<ListView Grid.Row="1" Margin="5" x:Name="ListViewSourcePasses"
-							          ItemsSource="{Binding Main.ModelPasses, Mode=OneWay}"
-							          Background="{StaticResource ScrollViewerBackgroundSpecial}">
-								<ListView.ItemContainerStyle>
-									<Style TargetType="ListViewItem">
-										<Setter Property="HorizontalContentAlignment" Value="Stretch" />
-										<Setter Property="Background" Value="{StaticResource ScrollViewerBackgroundSpecial}" />
-									</Style>
-								</ListView.ItemContainerStyle>
-								<ListView.ItemTemplate>
-									<DataTemplate>
-										<Grid HorizontalAlignment="Stretch">
-											<Grid.ColumnDefinitions>
-												<ColumnDefinition Width="2*" />
-												<ColumnDefinition Width="2*" />
-												<ColumnDefinition Width="*" />
-												<ColumnDefinition Width="*" />
-												<ColumnDefinition Width="Auto" />
-												<ColumnDefinition Width="20" />
-											</Grid.ColumnDefinitions>
-											<Grid.RowDefinitions>
-												<RowDefinition Height="Auto" />
-												<RowDefinition Height="Auto" />
-											</Grid.RowDefinitions>
+                            <ListView Grid.Row="1" Margin="5" x:Name="ListViewSourcePasses"
+							          ItemsSource="{Binding Main.ModelPasses, Mode=OneWay}" BorderBrush="#FD3E3D33">
+                                <ListView.Background>
+                                    <SolidColorBrush Color="{StaticResource LightBackgroundColor}"/>
+                                </ListView.Background>
+                                <ListView.ItemContainerStyle>
+                                    <Style TargetType="ListViewItem">
+                                        <Setter Property="HorizontalContentAlignment" Value="Stretch" />
+                                        <Setter Property="Background" Value="{StaticResource ScrollViewerBackgroundSpecial}" />
+                                    </Style>
+                                </ListView.ItemContainerStyle>
+                                <ListView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Grid HorizontalAlignment="Stretch">
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="2*" />
+                                                <ColumnDefinition Width="2*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="*" />
+                                                <ColumnDefinition Width="Auto" />
+                                                <ColumnDefinition Width="20" />
+                                            </Grid.ColumnDefinitions>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="Auto" />
+                                                <RowDefinition Height="Auto" />
+                                            </Grid.RowDefinitions>
 
-											<TextBlock x:Name="fiName" Grid.Column="0" Grid.Row="0" Margin="5" FontWeight="Bold" TextWrapping="Wrap"
+                                            <TextBlock x:Name="fiName" Grid.Column="0" Grid.Row="0" Margin="5" FontWeight="Bold" TextWrapping="Wrap"
 											           Text="{Binding Title, Mode=OneWay}" FontSize="16" />
 
-											<ComboBox Grid.Column="1" Grid.Row="0" Margin="5" Visibility="{Binding VisibilityFormat, Mode=OneWay}"
+                                            <ComboBox Grid.Column="1" Grid.Row="0" Margin="5" Visibility="{Binding VisibilityFormat, Mode=OneWay}"
 											          ItemsSource="{Binding ProxyDxgiFormat, Mode=OneWay}"
 											          SelectedValue="{Binding ForceFormat, Mode=TwoWay}" />
 
-											<ComboBox Grid.Column="2" Grid.ColumnSpan="2"  Grid.Row="0" Margin="5" Visibility="{Binding VisibilityCompression, Mode=OneWay}"
+                                            <ComboBox Grid.Column="2" Grid.ColumnSpan="2"  Grid.Row="0" Margin="5" Visibility="{Binding VisibilityCompression, Mode=OneWay}"
 											          ItemsSource="{Binding ProxyTypeTexCompressions, Mode=OneWay}"
 											          SelectedValue="{Binding TypeTexCompression, Mode=TwoWay}"
 											          SelectedValuePath="TypeTexCompression" DisplayMemberPath="Text" />
 
-											<ComboBox Grid.Column="1" Grid.Row="0" Margin="5" Visibility="{Binding VisibilityDownscaleFactor, Mode=OneWay}"
+                                            <ComboBox Grid.Column="1" Grid.Row="0" Margin="5" Visibility="{Binding VisibilityDownscaleFactor, Mode=OneWay}"
 											          ItemsSource="{Binding ProxyDownscaleFactor, Mode=OneWay}"
 											          SelectedValue="{Binding WantedFactor, Mode=TwoWay}"
 											          SelectedValuePath="Integer" DisplayMemberPath="Text" />
 
-											<ComboBox Grid.Column="1" Grid.Row="0" Margin="5" Visibility="{Binding VisibilityDownscaleFixed, Mode=OneWay}"
+                                            <ComboBox Grid.Column="1" Grid.Row="0" Margin="5" Visibility="{Binding VisibilityDownscaleFixed, Mode=OneWay}"
 											          ItemsSource="{Binding ProxyDownscaleSize, Mode=OneWay}"
 											          SelectedValue="{Binding WantedSize, Mode=TwoWay}"
 											          SelectedValuePath="Integer" DisplayMemberPath="Text" />
 
-											<ComboBox Grid.Column="1" Grid.Row="0" Margin="5" Visibility="{Binding VisibilityUpscaleFactor, Mode=OneWay}"
+                                            <ComboBox Grid.Column="1" Grid.Row="0" Margin="5" Visibility="{Binding VisibilityUpscaleFactor, Mode=OneWay}"
 											          ItemsSource="{Binding ProxyUpscaleFactor, Mode=OneWay}"
 											          SelectedValue="{Binding WantedFactor, Mode=TwoWay}"
 											          SelectedValuePath="Integer" DisplayMemberPath="Text" />
 
-											<ComboBox Grid.Column="1" Grid.Row="0" Margin="5" Visibility="{Binding VisibilityUpscaleFixed, Mode=OneWay}"
+                                            <ComboBox Grid.Column="1" Grid.Row="0" Margin="5" Visibility="{Binding VisibilityUpscaleFixed, Mode=OneWay}"
 											          ItemsSource="{Binding ProxyUpscaleSize, Mode=OneWay}"
 											          SelectedValue="{Binding WantedSize, Mode=TwoWay}"
 											          SelectedValuePath="Integer" DisplayMemberPath="Text" />
 
-											<ComboBox Grid.Column="2" Grid.ColumnSpan="2"  Grid.Row="0" Margin="5" Visibility="{Binding VisibilityMinSize, Mode=OneWay}"
+                                            <ComboBox Grid.Column="2" Grid.ColumnSpan="2"  Grid.Row="0" Margin="5" Visibility="{Binding VisibilityMinSize, Mode=OneWay}"
 											          ItemsSource="{Binding ProxyMinSize, Mode=OneWay}"
 											          SelectedValue="{Binding WantedMinSize, Mode=TwoWay}"
 											          SelectedValuePath="Integer" DisplayMemberPath="Text" />
 
-											<ComboBox Grid.Column="2" Grid.ColumnSpan="2"  Grid.Row="0" Margin="5" Visibility="{Binding VisibilityMaxSize, Mode=OneWay}"
+                                            <ComboBox Grid.Column="2" Grid.ColumnSpan="2"  Grid.Row="0" Margin="5" Visibility="{Binding VisibilityMaxSize, Mode=OneWay}"
 											          ItemsSource="{Binding ProxyMaxSize, Mode=OneWay}"
 											          SelectedValue="{Binding WantedMaxSize, Mode=TwoWay}"
 											          SelectedValuePath="Integer" DisplayMemberPath="Text" />
 
-											<TextBox Grid.Column="1" Grid.ColumnSpan="2"  Grid.Row="0"  Margin="5" Text="{Binding Command, Mode=TwoWay}" Visibility="{Binding VisibilityCommand, Mode=OneWay}"/>
+                                            <TextBox Grid.Column="1" Grid.ColumnSpan="2"  Grid.Row="0"  Margin="5" Text="{Binding Command, Mode=TwoWay}" Visibility="{Binding VisibilityCommand, Mode=OneWay}"/>
 
-											<CheckBox Grid.Column="3" Grid.Row="0"  Margin="5" Content="Apply to PNG"  IsChecked="{Binding IsApplyOnPng, Mode=TwoWay}"  Visibility="{Binding VisibilityApplyPng, Mode=OneWay}"/>
+                                            <CheckBox Grid.Column="3" Grid.Row="0"  Margin="5" Content="Apply to PNG"  IsChecked="{Binding IsApplyOnPng, Mode=TwoWay}"  Visibility="{Binding VisibilityApplyPng, Mode=OneWay}"/>
 
-											<Button Grid.Column="4" Grid.Row="0" Margin="5" Content="Filters" Click="ShowFilters" />
+                                            <Button Grid.Column="4" Grid.Row="0" Margin="5" Content="Filters" Click="ShowFilters" />
 
-											<Button Grid.Row="0" Grid.Column="5" Padding="2" HorizontalAlignment="Center" VerticalAlignment="Center"
+                                            <Button Grid.Row="0" Grid.Column="5" Padding="2" HorizontalAlignment="Center" VerticalAlignment="Center"
 											        Command="{Binding ElementName=ListViewSourcePasses, Path=DataContext.Main.DeleteItemCommand}"
 											        CommandParameter="{Binding }">
-												<Path Data="M0,0 L1,1 M0,1 L1,0" Stretch="Fill" Stroke="{StaticResource ForegroundBrush}"
+                                                <Path Data="M0,0 L1,1 M0,1 L1,0" Stretch="Fill" Stroke="{StaticResource ForegroundBrush}"
 												      StrokeThickness="2" Width="12" Height="12" />
-											</Button>
+                                            </Button>
 
-											<userControls:FilterShow Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="1"
+                                            <userControls:FilterShow Grid.Column="0" Grid.ColumnSpan="5" Grid.Row="1"
 											                         ModelConfigurationSelection="{Binding ModelSelection,Mode=OneWay}" />
 
-										</Grid>
+                                        </Grid>
 
-										<DataTemplate.Triggers>
-											<DataTrigger Binding="{Binding TypePass, Mode=OneWay}" Value="0">
-												<Setter TargetName="fiName" Property="Foreground" Value="Gold" />
-											</DataTrigger>
-											<DataTrigger Binding="{Binding TypePass, Mode=OneWay}" Value="1">
-												<Setter TargetName="fiName" Property="Foreground" Value="Crimson" />
-											</DataTrigger>
-											<DataTrigger Binding="{Binding TypePass, Mode=OneWay}" Value="2">
-												<Setter TargetName="fiName" Property="Foreground" Value="LightSeaGreen" />
-											</DataTrigger>
-											<DataTrigger Binding="{Binding TypePass, Mode=OneWay}" Value="3">
-												<Setter TargetName="fiName" Property="Foreground" Value="Green" />
-											</DataTrigger>
-											<DataTrigger Binding="{Binding TypePass, Mode=OneWay}" Value="4">
-												<Setter TargetName="fiName" Property="Foreground" Value="MediumBlue" />
-											</DataTrigger>
-											<DataTrigger Binding="{Binding TypePass, Mode=OneWay}" Value="5">
-												<Setter TargetName="fiName" Property="Foreground" Value="Khaki" />
-											</DataTrigger>
-											<DataTrigger Binding="{Binding TypePass, Mode=OneWay}" Value="6">
-												<Setter TargetName="fiName" Property="Foreground" Value="DarkViolet" />
-											</DataTrigger>
-											<DataTrigger Binding="{Binding TypePass, Mode=OneWay}" Value="7">
-												<Setter TargetName="fiName" Property="Foreground" Value="Orange" />
-											</DataTrigger>
-											<DataTrigger Binding="{Binding TypePass, Mode=OneWay}" Value="8">
-												<Setter TargetName="fiName" Property="Foreground" Value="DeepPink" />
-											</DataTrigger>
-											<DataTrigger Binding="{Binding TypePass, Mode=OneWay}" Value="9">
-												<Setter TargetName="fiName" Property="Foreground" Value="IndianRed" />
-											</DataTrigger>
-											<DataTrigger Binding="{Binding TypePass, Mode=OneWay}" Value="10">
-												<Setter TargetName="fiName" Property="Foreground" Value="Olive" />
-											</DataTrigger>
-											<DataTrigger Binding="{Binding TypePass, Mode=OneWay}" Value="11">
-												<Setter TargetName="fiName" Property="Foreground" Value="Coral" />
-											</DataTrigger>
-										</DataTemplate.Triggers>
-									</DataTemplate>
-								</ListView.ItemTemplate>
-							</ListView>
-							<Menu Grid.Row="2" Margin="5">
-								<!--Size-->
-								<MenuItem Header="Add _size filter" Margin="5">
-									<MenuItem Header="_Downscale by factor" Margin="5"
+                                        <DataTemplate.Triggers>
+                                            <DataTrigger Binding="{Binding TypePass, Mode=OneWay}" Value="0">
+                                                <Setter TargetName="fiName" Property="Foreground" Value="Gold" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding TypePass, Mode=OneWay}" Value="1">
+                                                <Setter TargetName="fiName" Property="Foreground" Value="Crimson" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding TypePass, Mode=OneWay}" Value="2">
+                                                <Setter TargetName="fiName" Property="Foreground" Value="LightSeaGreen" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding TypePass, Mode=OneWay}" Value="3">
+                                                <Setter TargetName="fiName" Property="Foreground" Value="Green" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding TypePass, Mode=OneWay}" Value="4">
+                                                <Setter TargetName="fiName" Property="Foreground" Value="MediumBlue" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding TypePass, Mode=OneWay}" Value="5">
+                                                <Setter TargetName="fiName" Property="Foreground" Value="Khaki" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding TypePass, Mode=OneWay}" Value="6">
+                                                <Setter TargetName="fiName" Property="Foreground" Value="DarkViolet" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding TypePass, Mode=OneWay}" Value="7">
+                                                <Setter TargetName="fiName" Property="Foreground" Value="Orange" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding TypePass, Mode=OneWay}" Value="8">
+                                                <Setter TargetName="fiName" Property="Foreground" Value="DeepPink" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding TypePass, Mode=OneWay}" Value="9">
+                                                <Setter TargetName="fiName" Property="Foreground" Value="IndianRed" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding TypePass, Mode=OneWay}" Value="10">
+                                                <Setter TargetName="fiName" Property="Foreground" Value="Olive" />
+                                            </DataTrigger>
+                                            <DataTrigger Binding="{Binding TypePass, Mode=OneWay}" Value="11">
+                                                <Setter TargetName="fiName" Property="Foreground" Value="Coral" />
+                                            </DataTrigger>
+                                        </DataTemplate.Triggers>
+                                    </DataTemplate>
+                                </ListView.ItemTemplate>
+                            </ListView>
+                            <Menu Grid.Row="2" Margin="5">
+                                <!--Size-->
+                                <MenuItem Header="Add _size filter" Margin="5">
+                                    <MenuItem Header="_Downscale by factor" Margin="5"
 									          Click="ButtonAddDividePass" />
-									<MenuItem Header="Downscale by _size" Margin="5"
+                                    <MenuItem Header="Downscale by _size" Margin="5"
 									          Click="ButtonAddFixedPass" />
-									<MenuItem Header="_Upscale by factor" Margin="5"
+                                    <MenuItem Header="_Upscale by factor" Margin="5"
 									          Click="ButtonAddUpscaleFactor" />
-									<MenuItem Header="U_pscale by size" Margin="5"
+                                    <MenuItem Header="U_pscale by size" Margin="5"
 									          Click="ButtonAddUpscaleFixed" />
-									<MenuItem Header="_Correct invalid size" Margin="5"
+                                    <MenuItem Header="_Correct invalid size" Margin="5"
 									          Click="ButtonAddCorrectSize" />
-								</MenuItem>
-								<!--Mips-->
-								<MenuItem Header="Add _mipmap filter" Margin="5">
-									<MenuItem Header="_Force mipmaps generation" Margin="5"
+                                </MenuItem>
+                                <!--Mips-->
+                                <MenuItem Header="Add _mipmap filter" Margin="5">
+                                    <MenuItem Header="_Force mipmaps generation" Margin="5"
 									          Click="ButtonAddForceMipmap" />
-									<MenuItem Header="_Correct invalid mipmaps" Margin="5"
+                                    <MenuItem Header="_Correct invalid mipmaps" Margin="5"
 									          Click="ButtonAddCorrectMipmap" />
-								</MenuItem>
-								<!--Format and compression-->
-								<MenuItem Header="Add _format/compression filter" Margin="5">
-									<MenuItem Header="_Change texture format"
+                                </MenuItem>
+                                <!--Format and compression-->
+                                <MenuItem Header="Add _format/compression filter" Margin="5">
+                                    <MenuItem Header="_Change texture format"
 									          Margin="5"
 									          Click="ButtonAddFormatPass" />
-									<MenuItem Header="_Force recompression" Margin="5"
+                                    <MenuItem Header="_Force recompression" Margin="5"
 									          Click="ButtonAddForce" />
-								</MenuItem>
-								<!--Customs-->
-								<MenuItem Header="Add _specials filter" Margin="5">
-									<MenuItem Header="_Apply GMIC filter" Margin="5"
+                                    <MenuItem Header="_Strip unused alphas" Margin="5"
+									          Click="ButtonAddStripAlpha" />
+                                </MenuItem>
+                                <!--Customs-->
+                                <MenuItem Header="Add _specials filter" Margin="5">
+                                    <MenuItem Header="_Apply GMIC filter" Margin="5"
 									          Click="ButtonAddGmic" />
-									<MenuItem Header="Add _custom command" Margin="5"
+                                    <MenuItem Header="Add _custom command" Margin="5"
 									          Click="ButtonAddCustom" />
-								</MenuItem>
-							</Menu>
-							<!--<Grid Grid.Row="2">
+                                </MenuItem>
+                            </Menu>
+                            <!--<Grid Grid.Row="2">
 								<Grid.ColumnDefinitions>
 									<ColumnDefinition Width="Auto" />
 									<ColumnDefinition Width="Auto" />
@@ -414,294 +421,200 @@
 								
 								</Menu>
 								-->
-							<!--<Button Grid.Column="4" Content="Remove" Height="32" Margin="5"
+                            <!--<Button Grid.Column="4" Content="Remove" Height="32" Margin="5"
 								        Click="RemovePass" Width="115" />-->
-							<!--
+                            <!--
 							</Grid>-->
-						</Grid>
-					</ScrollViewer>
-				</TabItem>
-				<TabItem Header="Merging">
-					<ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled"
-					              Background="{StaticResource ScrollViewerBackgroundSpecial}">
-						<StackPanel Orientation="Vertical" Margin="10">
-							<CheckBox Margin="5"
+                        </Grid>
+                    </ScrollViewer>
+                </TabItem>
+                <TabItem Header="Merging" Background="#FF3E3D38">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                        <ScrollViewer.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF292825"/>
+                                <GradientStop Color="#FF3E3D38" Offset="1"/>
+                            </LinearGradientBrush>
+                        </ScrollViewer.Background>
+                        <StackPanel Orientation="Vertical" Margin="10">
+                            <CheckBox Margin="5"
 							          IsChecked="{Binding Main.IsMergeActivated, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged }">
-								<TextBlock Text="Merge mods into a single directory" TextWrapping="Wrap" />
-							</CheckBox>
-							<Separator Margin="5" />
-							<StackPanel Orientation="Vertical" Visibility="{Binding Main.VisibilityMerge, Mode=OneWay}">
+                                <TextBlock Text="Merge mods into a single directory" TextWrapping="Wrap" />
+                            </CheckBox>
+                            <Separator Margin="5" />
+                            <StackPanel Orientation="Vertical" Visibility="{Binding Main.VisibilityMerge, Mode=OneWay}">
 
-								<TextBlock Margin="5" Text="Merging and reuniting mods" FontWeight="Black" FontSize="16" />
-
-								<TextBlock Margin="5" Foreground="DodgerBlue" TextWrapping="Wrap"
-								           Text="Use the following options if you intend to merge mods into a single directory." />
-								<TextBlock Margin="5" Foreground="DodgerBlue" TextWrapping="Wrap"
+                                <TextBlock Margin="5" Text="Merging and reuniting mods" FontWeight="Black" FontSize="16" />
+                                <TextBlock Margin="5" Foreground="#FF88826B" TextWrapping="Wrap"
 								           Text="The source path MUST be the containing directory. For mo2 users, it's the &quot;mods&quot; directory." />
-								<TextBlock Margin="5" Foreground="DodgerBlue" TextWrapping="Wrap"
-								           Text="If you have no idea why i've made this option, i've made it to merge really big textures mods, to delete unused duplicate textures." />
 
-								<Grid>
-									<Grid.ColumnDefinitions>
-										<ColumnDefinition Width="*" />
-										<ColumnDefinition Width="2*" />
-										<ColumnDefinition Width="Auto" />
-									</Grid.ColumnDefinitions>
-									<TextBlock Grid.Column="0" Margin="5" Text="Copy all in this directory:" />
-									<TextBox Grid.Column="1" Margin="5"
-									         Text="{Binding Main.PathMergeDirectory, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
-									<Button Grid.Column="2" Margin="5" Content=". . ." Click="SetMergeDir" />
-								</Grid>
-								<TextBlock Margin="5" Foreground="DodgerBlue" TextWrapping="Wrap"
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="2*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Margin="5" Text="Copy all in this directory:" />
+                                    <TextBox Grid.Column="1" Margin="5"
+									         Text="{Binding Main.PathMergeDirectory, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Background="#FF3E3D33" SelectionBrush="#FFA7813E" />
+                                    <Button Grid.Column="2" Margin="5" Content="  ...  " Click="SetMergeDir" />
+                                </Grid>
+                                <TextBlock Margin="5" Foreground="#FF88826B" TextWrapping="Wrap"
 								           Text="Every files will be copied in this directory, and will overwrite if any files currently exist." />
-								<CheckBox Margin="5"
+                                <CheckBox Margin="5"
 								          IsChecked="{Binding Main.IsMergeAssertCase, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged }">
-									<TextBlock Text="Assert file name case" TextWrapping="Wrap" />
-								</CheckBox>
-								<CheckBox Margin="5"
+                                    <TextBlock Text="Assert file name case" TextWrapping="Wrap" />
+                                </CheckBox>
+                                <CheckBox Margin="5"
 								          IsChecked="{Binding Main.IsMergeDeleteIfNotInSource, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged }">
-									<TextBlock Text="Delete all file not found in source" TextWrapping="Wrap" />
-								</CheckBox>
-								<CheckBox Margin="5"
+                                    <TextBlock Text="Delete all file not found in source" TextWrapping="Wrap" />
+                                </CheckBox>
+                                <CheckBox Margin="5"
 								          IsChecked="{Binding Main.IsUnmergeActivated, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged }">
-									<TextBlock Text="Unmerge: delete files found in source from target" TextWrapping="Wrap" />
-								</CheckBox>
+                                    <TextBlock Text="Unmerge: delete files found in source from target" TextWrapping="Wrap" />
+                                </CheckBox>
 
-								<Grid>
-									<Grid.ColumnDefinitions>
-										<ColumnDefinition Width="*" />
-										<ColumnDefinition Width="2*" />
-										<ColumnDefinition Width="Auto" />
-									</Grid.ColumnDefinitions>
-									<TextBlock Grid.Column="0" Margin="5" Text="Use a MO2 mod export file:" />
-									<TextBox Grid.Column="1" Margin="5"
-									         Text="{Binding Main.PathMergePriorityFile, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
-									<Button Grid.Column="2" Margin="5" Content=". . ." Click="SetModPriorityFile" />
-								</Grid>
-								<TextBlock Margin="5" Foreground="DodgerBlue" TextWrapping="Wrap"
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="2*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Margin="5" Text="Use a MO2 mod export file:" />
+                                    <TextBox Grid.Column="1" Margin="5"
+									         Text="{Binding Main.PathMergePriorityFile, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" Background="#FF3E3D33" SelectionBrush="#FFA7813E" />
+                                    <Button Grid.Column="2" Margin="5" Content="  ...  " Click="SetModPriorityFile" />
+                                </Grid>
+                                <TextBlock Margin="5" Foreground="#FF88826B" TextWrapping="Wrap"
 								           Text="Keep this empty if you want the priority based on alphabetical order. Give a MO2 mod export file to force priority and overwrite mods with low priority." />
-								<TextBlock Margin="5" Foreground="DodgerBlue" TextWrapping="Wrap"
+                                <TextBlock Margin="5" Foreground="#FF88826B" TextWrapping="Wrap"
 								           Text="The first line of this file should be &quot;#Mod_Priority,#Mod_Name&quot; it could be obtened via the MO2 tool &quot;Export to csv&quot;" />
-								<TextBlock Margin="5" Foreground="DodgerBlue" TextWrapping="Wrap"
-								           Text="Octagon will copy all the mods into the directory in the order included in this file. So a mod loose files with a priority of 1 will be overwrited by the files of a mod with a priority of 2." />
+                                <TextBlock Margin="5" Foreground="#FF88826B" TextWrapping="Wrap"
+								           Text="Performout will copy all the mods into the directory in the order included in this file. So a mod loose files with a priority of 1 will be overwrited by the files of a mod with a priority of 2." />
 
-							</StackPanel>
-						</StackPanel>
-					</ScrollViewer>
-				</TabItem>
-				<TabItem Header="Bsa">
-					<ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled"
-					              Background="{StaticResource ScrollViewerBackgroundSpecial}">
-						<StackPanel Orientation="Vertical" Margin="10">
+                            </StackPanel>
+                        </StackPanel>
+                    </ScrollViewer>
+                </TabItem>
+                <TabItem Header="Bsa" Background="#FF3E3D38">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                        <ScrollViewer.Background>
+                            <LinearGradientBrush EndPoint="0.5,1" StartPoint="0.5,0">
+                                <GradientStop Color="#FF292825"/>
+                                <GradientStop Color="#FF3E3D38" Offset="1"/>
+                            </LinearGradientBrush>
+                        </ScrollViewer.Background>
+                        <StackPanel Orientation="Vertical" Margin="10">
 
-							<CheckBox Margin="5"
+                            <CheckBox Margin="5"
 							          IsChecked="{Binding Main.ModelPassBsa.Enabled, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged }">
-								<TextBlock Text="Enable the processing of BSA archive files" TextWrapping="Wrap" />
-							</CheckBox>
+                                <TextBlock Text="Enable the processing of BSA archive files" TextWrapping="Wrap" />
+                            </CheckBox>
 
-							<StackPanel Orientation="Vertical" Visibility="{Binding Main.ModelPassBsa.VisibilityEnabled, Mode=OneWay}">
+                            <StackPanel Orientation="Vertical" Visibility="{Binding Main.ModelPassBsa.VisibilityEnabled, Mode=OneWay}">
 
-								<Separator Margin="5" />
-								<Button Margin="5" Content="Edit BSA archives filters" Click="ShowBsaFilter" />
-								<userControls:FilterShow ModelConfigurationSelection="{Binding Main.ModelPassBsa.ModelSelection,Mode=OneWay}" />
+                                <Separator Margin="5" />
+                                <Button Margin="5" Content="Edit BSA archives filters" Click="ShowBsaFilter" />
+                                <userControls:FilterShow ModelConfigurationSelection="{Binding Main.ModelPassBsa.ModelSelection,Mode=OneWay}" />
 
-								<TextBlock Margin="5" Foreground="DodgerBlue" TextWrapping="Wrap"
-								           Text="Filters allow you to decide which BSA files will be processed. Only bsa archives files containing DDS textures files are processed anyway." />
-
-								<Separator Margin="5" />
-								<Grid HorizontalAlignment="Stretch">
-									<Grid.ColumnDefinitions>
-										<ColumnDefinition Width="*" />
-										<ColumnDefinition Width="2*" />
-									</Grid.ColumnDefinitions>
-									<TextBlock Grid.Column="0" Margin="5" Text="BSA Game target:" TextWrapping="Wrap" VerticalAlignment="Center" />
-									<ComboBox Grid.Column="1" Margin="5"
+                                <Separator Margin="5" />
+                                <Grid HorizontalAlignment="Stretch">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="2*" />
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Grid.Column="0" Margin="5" Text="BSA Game target:" TextWrapping="Wrap" VerticalAlignment="Center" />
+                                    <ComboBox Grid.Column="1" Margin="5"
 									          ItemsSource="{Binding ProxyBsaGames, Mode=OneWay}"
 									          SelectedValue="{Binding Main.ModelPassBsa.GameParameter, Mode=TwoWay}"
-									          SelectedValuePath="BsaGame" DisplayMemberPath="Text" />
-								</Grid>
-								<TextBlock Margin="5" Foreground="DodgerBlue" TextWrapping="Wrap"
-								           Text="Following check currently work only for Fallout 4:" />
-								<CheckBox Margin="5"
+									          SelectedValuePath="BsaGame" DisplayMemberPath="Text" SelectionChanged="ComboBox_SelectionChanged_1" />
+                                </Grid>
+                                <CheckBox Margin="5"
 								          IsChecked="{Binding Main.ModelPassBsa.IsCheckFormatIsGameFormat, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged }">
-									<TextBlock Text="Check bsa file format is the same as the game target." TextWrapping="Wrap" />
-								</CheckBox>
+                                    <TextBlock Text="Check bsa file format is the same as the game target." TextWrapping="Wrap" />
+                                </CheckBox>
 
-								<CheckBox Margin="5"
+                                <CheckBox Margin="5"
 								          IsChecked="{Binding Main.ModelPassBsa.IsUnpack, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged }">
-									<TextBlock Text="Unpack BSAs files containing DDS textures" TextWrapping="Wrap" />
-								</CheckBox>
-								<Grid>
-									<Grid.ColumnDefinitions>
-										<ColumnDefinition Width="*"/>
-										<ColumnDefinition Width="*"/>
-									</Grid.ColumnDefinitions>
-									<CheckBox Margin="5" Grid.Column="0"
+                                    <TextBlock Text="Unpack BSAs files containing DDS textures" TextWrapping="Wrap" />
+                                </CheckBox>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <CheckBox Margin="5" Grid.Column="0"
 									          IsChecked="{Binding Main.ModelPassBsa.IsRepack, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged }">
-										<TextBlock Text="Repack BSAs after processing" TextWrapping="Wrap" />
-									</CheckBox>
-									<CheckBox Margin="5" Grid.Column="1"
+                                        <TextBlock Text="Repack BSAs after processing" TextWrapping="Wrap" />
+                                    </CheckBox>
+                                    <CheckBox Margin="5" Grid.Column="1"
 									          IsChecked="{Binding Main.ModelPassBsa.IsRepackOnlyIfMissingBsa, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged }">
-										<TextBlock Text="Check this to only repack if there is not a bsa file already" TextWrapping="Wrap" />
-									</CheckBox>
-								</Grid>
-								<CheckBox Margin="5"
+                                        <TextBlock Text="Check this to only repack if there is not a bsa file already" TextWrapping="Wrap" />
+                                    </CheckBox>
+                                </Grid>
+                                <CheckBox Margin="5"
 								          IsChecked="{Binding Main.ModelPassBsa.IsClean, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged }">
-									<TextBlock Text="Clean BSAs temporary files after processing" TextWrapping="Wrap" />
-								</CheckBox>
-								<Separator Margin="5" />
-								<TextBlock Margin="5" Foreground="DodgerBlue" TextWrapping="Wrap"
-								           Text="Use the following options if you intend to create a loose files version. Be warned the following option cannot be undone, even if the backup is active." />
-								<CheckBox Margin="5"
+                                    <TextBlock Text="Clean BSAs temporary files after processing" TextWrapping="Wrap" />
+                                </CheckBox>
+                                <Separator Margin="5" />
+                                <TextBlock Margin="5" Foreground="#FFDAC079" TextWrapping="Wrap"
+								           ><Run Language="pt-br" Text="Loose files Options:"/></TextBlock>
+                                <CheckBox Margin="5"
 								          IsChecked="{Binding Main.ModelPassBsa.IsCopyAsLoose, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged }">
-									<TextBlock Text="Copy BSAs content as loose files and delete the BSAs" TextWrapping="Wrap" />
-								</CheckBox>
-								<StackPanel Orientation="Vertical" Visibility="{Binding Main.ModelPassBsa.VisibilityIsCopyAsLoose, Mode=OneWay}">
+                                    <TextBlock Text="Copy BSAs content as loose files and delete the BSAs" TextWrapping="Wrap" />
+                                </CheckBox>
+                                <StackPanel Orientation="Vertical" Visibility="{Binding Main.ModelPassBsa.VisibilityIsCopyAsLoose, Mode=OneWay}">
 
-									<CheckBox Margin="5"
+                                    <CheckBox Margin="5"
 								          IsChecked="{Binding Main.ModelPassBsa.IsTreatNonTextureArchives, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged }">
-										<TextBlock Text="Treat every BSAs, even if they don't contains any texture files" TextWrapping="Wrap" />
-									</CheckBox>
-									<CheckBox Margin="5"
+                                        <TextBlock Text="Treat every BSAs, even if they don't contains any texture files" TextWrapping="Wrap" />
+                                    </CheckBox>
+                                    <CheckBox Margin="5"
 								          IsChecked="{Binding Main.ModelPassBsa.IsCopyAsLooseIfDummy, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged }">
-										<TextBlock Text="Treat only bsa with a dummy esp and delete the esp" TextWrapping="Wrap" />
-									</CheckBox>
-								</StackPanel>
-								<Separator Margin="5" />
-								<TextBlock Margin="5" Foreground="DodgerBlue" TextWrapping="Wrap"
-								           Text="Use the following options if you intend to create a archives from loose files version. Be warned the following options may mess up your backup." />
+                                        <TextBlock Text="Treat only bsa with a dummy esp and delete the esp" TextWrapping="Wrap" />
+                                    </CheckBox>
+                                </StackPanel>
+                                <Separator Margin="5" />
+                                <TextBlock Margin="5" Foreground="#FFDAC079" TextWrapping="Wrap"
+								           ><Run Language="pt-br" Text="C"/><Run Text="reate archives from loose files"/><Run Language="pt-br" Text=":"/></TextBlock>
 
-								<CheckBox Margin="5"
+                                <CheckBox Margin="5"
 								          IsChecked="{Binding Main.ModelPassBsa.IsRepackLooseFilesInBsa, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged }">
-									<TextBlock Text="Repack loose files in BSAs" TextWrapping="Wrap" />
-								</CheckBox>
+                                    <TextBlock Text="Repack loose files in BSAs" TextWrapping="Wrap" />
+                                </CheckBox>
 
-								<StackPanel Orientation="Vertical" Visibility="{Binding Main.ModelPassBsa.VisibilityRepackLooseFilesInBsa, Mode=OneWay}">
+                                <StackPanel Orientation="Vertical" Visibility="{Binding Main.ModelPassBsa.VisibilityRepackLooseFilesInBsa, Mode=OneWay}">
 
-									<CheckBox Margin="5"
+                                    <CheckBox Margin="5"
 								          IsChecked="{Binding Main.ModelPassBsa.IsIntelligentPacking, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged }" >
-										<TextBlock Text="Intelligent Packing" TextWrapping="Wrap" />
-									</CheckBox>
-									<TextBlock Margin="5" Foreground="DodgerBlue" TextWrapping="Wrap"
-								           Text="Intelligent packing will make up to two esp. One compressed for textures only named by the esp/esm/esl name with the '- Textures' suffixe, one with everything else, compressed if no sound/music present, with the esp/esm/esl name." />
-									<TextBlock Margin="5" Foreground="DodgerBlue" TextWrapping="Wrap"
-								           Text="Warning: don't use intelligent packing if the size of the resulting esp could be higher than 2Go. Depending on the case the bsa could not be loaded properly." />
+                                        <TextBlock TextWrapping="Wrap" ><Run Language="pt-br" Text="Separate BSAs for textures"/></TextBlock>
+                                    </CheckBox>
 
-									<CheckBox Margin="5"   Visibility="{Binding Main.ModelPassBsa.VisibilityRepackIntelligent, Mode=OneWay}"
+                                    <CheckBox Margin="5"   Visibility="{Binding Main.ModelPassBsa.VisibilityRepackIntelligent, Mode=OneWay}"
 								          IsChecked="{Binding Main.ModelPassBsa.IsRepackCreateDummy, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged }">
-										<TextBlock Text="Create empty esp when none present" TextWrapping="Wrap" />
-									</CheckBox>
-									<TextBlock Margin="5" Foreground="DodgerBlue" TextWrapping="Wrap"  Visibility="{Binding Main.ModelPassBsa.VisibilityRepackIntelligent, Mode=OneWay}"
+                                        <TextBlock Text="Create empty esp when none present" TextWrapping="Wrap" />
+                                    </CheckBox>
+                                    <TextBlock Margin="5" Foreground="#FF88826B" TextWrapping="Wrap"  Visibility="{Binding Main.ModelPassBsa.VisibilityRepackIntelligent, Mode=OneWay}"
 								           Text="This option ill create an empty esp (tagged esl) if no esp/esm/esl is present. You can change this esp file by replacing the dummy.esp present in the program folder." />
 
-									<userControls:RepackShow  Visibility="{Binding Main.ModelPassBsa.VisibilityRepackNotIntelligent, Mode=OneWay}"
+                                    <userControls:RepackShow  Visibility="{Binding Main.ModelPassBsa.VisibilityRepackNotIntelligent, Mode=OneWay}"
 										ModelConfigurationPassBsa="{Binding Main.ModelPassBsa,Mode=OneWay}" />
-								</StackPanel>
-							</StackPanel>
-						</StackPanel>
-					</ScrollViewer>
-				</TabItem>
-				<TabItem Header="Tools paths">
-					<ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled"
-					              Background="{StaticResource ScrollViewerBackgroundSpecial}">
-						<StackPanel Orientation="Vertical" Margin="10">
+                                </StackPanel>
+                            </StackPanel>
+                        </StackPanel>
+                    </ScrollViewer>
+                </TabItem>
+            </TabControl>
+            <Button Content="Start" Margin="10,0,10,10" Height="32" VerticalAlignment="Bottom" FontWeight="Bold"
+			        Click="ButtonStart" BorderBrush="#FF1B1B18" FontFamily="Arial" >
+                <Button.Background>
+                    <RadialGradientBrush>
+                        <GradientStop Color="#FF33322E" Offset="1"/>
+                        <GradientStop Color="#FF3E3D38"/>
+                    </RadialGradientBrush>
+                </Button.Background>
+            </Button>
 
-							<TextBlock Margin="5" Text="Texdiag path:" FontWeight="Black" FontSize="16" />
-							<Grid>
-								<Grid.ColumnDefinitions>
-									<ColumnDefinition Width="*" />
-									<ColumnDefinition Width="Auto" />
-								</Grid.ColumnDefinitions>
-								<TextBox Grid.Column="0" Margin="5"
-								         Text="{Binding Main.ModelPath.PathTexdiag, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
-								<Button Grid.Column="1" Margin="5" Content=". . ." Click="SearchTexDiag" />
-							</Grid>
-							<TextBlock Margin="5" Text="Texconv path:" FontWeight="Black" FontSize="16" />
-							<Grid>
-								<Grid.ColumnDefinitions>
-									<ColumnDefinition Width="*" />
-									<ColumnDefinition Width="Auto" />
-								</Grid.ColumnDefinitions>
-								<TextBox Grid.Column="0" Margin="5"
-								         Text="{Binding Main.ModelPath.PathTexconv, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
-								<Button Grid.Column="1" Margin="5" Content=". . ." Click="SearchTexConv" />
-							</Grid>
-							<TextBlock Margin="5" Foreground="DodgerBlue" TextWrapping="Wrap"
-							           Text="Texconv and texdiag are microsoft tools needed to analyze and transform the image files." />
-							<TextBlock Margin="5">
-								<Hyperlink NavigateUri="https://github.com/Microsoft/DirectXTex/" RequestNavigate="Hyperlink_RequestNavigate"
-								           Foreground="LimeGreen">
-									Click here to see texconv/texdiag repository on github
-								</Hyperlink>
-							</TextBlock>
-
-							<TextBlock Margin="5" Text="Bsarch path:" FontWeight="Black" FontSize="16" />
-							<Grid>
-								<Grid.ColumnDefinitions>
-									<ColumnDefinition Width="*" />
-									<ColumnDefinition Width="Auto" />
-								</Grid.ColumnDefinitions>
-								<TextBox Grid.Column="0" Margin="5"
-								         Text="{Binding Main.ModelPath.PathBsarch, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
-								<Button Grid.Column="1" Margin="5" Content=". . ." Click="SearchBsarch" />
-							</Grid>
-							<TextBlock Margin="5" Foreground="DodgerBlue" TextWrapping="Wrap"
-							           Text="Bsarch allow parsing, uncompressing and compressing bethesda bsa archives" />
-							<TextBlock Margin="5">
-								<Hyperlink NavigateUri="https://www.nexusmods.com/newvegas/mods/64745"
-								           RequestNavigate="Hyperlink_RequestNavigate" Foreground="LimeGreen">
-									Click here to see the bsarch nexus page
-								</Hyperlink>
-							</TextBlock>
-
-
-							<TextBlock Margin="5" Text="Gmic path:" FontWeight="Black" FontSize="16" />
-							<Grid>
-								<Grid.ColumnDefinitions>
-									<ColumnDefinition Width="*" />
-									<ColumnDefinition Width="Auto" />
-								</Grid.ColumnDefinitions>
-								<TextBox Grid.Column="0" Margin="5"
-								         Text="{Binding Main.ModelPath.PathGmic, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
-								<Button Grid.Column="1" Margin="5" Content=". . ." Click="SearchGmic" />
-							</Grid>
-							<TextBlock Margin="5" Foreground="DodgerBlue" TextWrapping="Wrap"
-							           Text="Gmic allow you to transform the textures like changing luminosity, contrast, complex function, whatever, it does everything" />
-							<TextBlock Margin="5">
-								<Hyperlink NavigateUri="https://gmic.eu/" RequestNavigate="Hyperlink_RequestNavigate" Foreground="LimeGreen">
-									Click here to see the gmic portal
-								</Hyperlink>
-							</TextBlock>
-
-							<TextBlock Margin="5" Text="Custom tool path:" FontWeight="Black" FontSize="16" />
-							<Grid>
-								<Grid.ColumnDefinitions>
-									<ColumnDefinition Width="*" />
-									<ColumnDefinition Width="Auto" />
-								</Grid.ColumnDefinitions>
-								<TextBox Grid.Column="0" Margin="5"
-								         Text="{Binding Main.ModelPath.PathCustomTool, Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}" />
-								<Button Grid.Column="1" Margin="5" Content=". . ." Click="SearchCustomTool" />
-							</Grid>
-							<TextBlock Margin="5" Foreground="DodgerBlue" TextWrapping="Wrap"
-							           Text="Use this to apply a custom command line tool in your filters" />
-							<TextBlock Margin="5" Foreground="DodgerBlue" TextWrapping="Wrap"
-							           Text="In the filter command, this string will be replaced during execution:" />
-							<TextBlock Margin="5" Foreground="DodgerBlue" TextWrapping="Wrap"
-							           Text="%F% by the entire file path, like 'c:\textures\atexture.dds'" />
-							<TextBlock Margin="5" Foreground="DodgerBlue" TextWrapping="Wrap"
-							           Text="%N% by the file name, like 'texture.dds'" />
-							<TextBlock Margin="5" Foreground="DodgerBlue" TextWrapping="Wrap"
-							           Text="%E% by the file extention string, like '.dds'" />
-
-
-						</StackPanel>
-					</ScrollViewer>
-				</TabItem>
-			</TabControl>
-			<Button Content="Start" Margin="10,0,10,10" Height="32" VerticalAlignment="Bottom" FontWeight="Bold"
-			        Click="ButtonStart" />
-
-		</Grid>
-	</DockPanel>
+        </Grid>
+    </DockPanel>
 </Window>

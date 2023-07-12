@@ -1,9 +1,9 @@
 ﻿using System;
 using System.IO;
 using Newtonsoft.Json;
-using OctagonCommon.Configurations;
+using PerformoutCommon.Configurations;
 
-namespace OctagonCommon
+namespace PerformoutCommon
 {
    public class Persistence
    {

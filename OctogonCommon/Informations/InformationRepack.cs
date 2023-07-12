@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.IO;
-using OctagonCommon.Configurations;
+using PerformoutCommon.Configurations;
 
-namespace OctagonCommon.Informations
+namespace PerformoutCommon.Informations
 {
    public class InformationRepack
    {      

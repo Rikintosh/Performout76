@@ -1,4 +1,4 @@
-﻿namespace OctagonCommon.Informations
+﻿namespace PerformoutCommon.Informations
 {
    public class InformationPriority
    {
